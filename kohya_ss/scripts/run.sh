@@ -31,13 +31,15 @@ for devid in range(0,torch.cuda.device_count()):
 EOF
 
 cd "${ROOT}" && git pull
-if [[ -n "${ACCELERATE}" ]] && [[ "${ACCELERATE}" = "True" ]] && [[ -x "$(command -v accelerate)" ]]
-then
-    echo "Accelerating SD with distributed GPU+CPU..."
-    accelerate launch --num_cpu_threads_per_process=6 $@
-else
-    python -u $@
-fi
+echo "accelerate launch --num_cpu_threads_per_process=6 kohya_gui.py"
+#if [[ -n "${ACCELERATE}" ]] && [[ "${ACCELERATE}" = "True" ]] && [[ -x "$(command -v accelerate)" ]]
+#then
+#    echo "Accelerating SD with distributed GPU+CPU..."
+#    accelerate launch --num_cpu_threads_per_process=6 $@
+#else
+#    python -u $@
+#fi
 
-echo "Shutting down in 10 seconds"
-sleep 10
+/bin/bash
+echo "Shutting down in 5 seconds"
+sleep 5
